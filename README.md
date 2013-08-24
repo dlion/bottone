@@ -11,10 +11,8 @@ __Twitter:__ [@dlion](http://twitter.com/dlion92)
 
 ## Install
 
-```
-#!bash
+```bash
 git clone [http://github.com/DLion/bottone](http://github.com/DLion/bottone)
-
 ```
 
 ## Dependencies
