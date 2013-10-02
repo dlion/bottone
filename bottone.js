@@ -1,3 +1,4 @@
+#!/bin/env node
 //
 //Modules
 //
@@ -13,9 +14,13 @@ var irc = exec.connect(function() {
 });
 
 irc.on('data',function(data) {
-    data = data.toString();
+    data = data.toString().toLowerCase();
 
     exec.checkCMD(data,irc);
+});
+
+irc.on('error',function(err) {
+    exec.errorLog(err);
 });
 
 irc.on('end', function() {
