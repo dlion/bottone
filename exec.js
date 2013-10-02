@@ -1,4 +1,3 @@
-#!/bin/env node
 var config  =   require('./config'),
     net     =   require('net'),
     exec    =   exports;
@@ -23,7 +22,7 @@ exec.errorLog = function(msg) {
 // Connect to server
 //
 
-exports.connect =  function(cb) {
+exec.connect =  function(cb) {
     return net.connect(config.PORT, config.SERVER,cb);
 };
 
@@ -47,7 +46,7 @@ exec.msgChannel = function(msg,channel,irc) {
 // Welcome Message
 //
 
-exports.welcomeMsg = function(irc) {
+exec.welcomeMsg = function(irc) {
     exec.msgChannel("Hi at All!",config.CHAN,irc);
     exec.msgChannel("My name is "+config.REALNAME+" and I am a BOT :)",config.CHAN,irc);
     exec.msgChannel("You can see my CMD list send me !<command>",config.CHAN,irc);
@@ -57,7 +56,7 @@ exports.welcomeMsg = function(irc) {
 // Init
 //
 
-exports.init = function(irc) {
+exec.init = function(irc) {
     exec.infoLog("Connected to "+config.SERVER+":"+config.PORT);
     exec.msgServer("NICK "+config.NICK,irc);
     exec.msgServer("USER "+config.IDENTITY+" "+config.HOSTNAME+" * :"+config.REALNAME,irc);
@@ -70,7 +69,7 @@ exports.init = function(irc) {
 // Check Commands
 //
 
-exports.checkCMD = function(cmd,irc) {
+exec.checkCMD = function(cmd,irc) {
     console.log("RICV: "+cmd);
 
     if(cmd.indexOf("ping") > -1) {
